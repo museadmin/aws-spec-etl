@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
+require 'fileutils'
 require 'pathname'
 
-DOUBLE_OFFSET = '..' + File::SEPARATOR + '..' + File::SEPARATOR
-TRIPLE_OFFSET = DOUBLE_OFFSET + '..' + File::SEPARATOR
+DBL_RELATIVE = '..' + File::SEPARATOR + '..' + File::SEPARATOR
+TRPL_RELATIVE = DBL_RELATIVE + '..' + File::SEPARATOR
 
-require_relative DOUBLE_OFFSET + 'test_helper'
+require_relative DBL_RELATIVE + 'test_helper'
 
-require_relative TRIPLE_OFFSET +
+require_relative TRPL_RELATIVE +
                  File::SEPARATOR +
                  'lib' +
                  File::SEPARATOR +
@@ -16,7 +17,7 @@ require_relative TRIPLE_OFFSET +
 # Unit tests for the transformer
 class EtlTest < Minitest::Test
 
-  TEST_DIRECTORY = TRIPLE_OFFSET + 'test' + File::SEPARATOR
+  TEST_DIRECTORY = TRPL_RELATIVE + 'test' + File::SEPARATOR
   SEARCH_DIRECTORY = File.absolute_path(
     File.join(File.dirname(__FILE__), TEST_DIRECTORY + 'test_input')
   )
@@ -57,6 +58,8 @@ class EtlTest < Minitest::Test
 
     # Expected number of dirs
     assert_equal(expected_dirs.size, output_dirs.size)
+
+    # Files as expected
 
   end
 end
