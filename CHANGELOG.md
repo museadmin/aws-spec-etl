@@ -10,3 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ability to parse, refactor and save awspec generate
 - Gemspec file updated to enable push to Rubygems.org
 
+## [0.1.1] - 04-12-2018
+### Changed
+- Changed version and installed / released
