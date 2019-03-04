@@ -24,7 +24,7 @@ class SpecRbTransformer
   # Clear out the last run
   def clear_last_run(root_dir)
     Pathname.new(root_dir).children.select { |c| c.directory? }.collect { |p| p.to_s }.each do |dir|
-      next unless dir.include?("_test_")
+      next unless dir.include?("_tests_")
       FileUtils.remove_dir(dir)
     end
   end
