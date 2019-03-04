@@ -34,7 +34,7 @@ class EtlTest < Minitest::Test
     nacl_buckets_tests_non_prod
     s3_buckets_tests_non_prod
     security_groups_tests_non_prod
-  ].freeze
+  ]
 
   def test_that_it_has_a_version_number
     refute_nil ::Aws::Spec::Etl::VERSION

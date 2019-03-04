@@ -1,9 +1,11 @@
 # frozen_string_literal: true
-
-require_relative 'file_sieve'
-require_relative 'matches'
+#
 require 'active_support'
 require 'active_support/core_ext'
+require 'pathname'
+require_relative 'file_sieve'
+require_relative 'matches'
+
 
 # Transform a generated spec.rb file for running
 class SpecRbTransformer
@@ -17,6 +19,14 @@ class SpecRbTransformer
     @sieve = FileSieve.new(search_directory, TEST_EXTENSION)
     @tag = ''
     @described = false
+  end
+
+  # Clear out the last run
+  def clear_last_run(root_dir)
+    Pathname.new(root_dir).children.select { |c| c.directory? }.collect { |p| p.to_s }.each do |dir|
+      next unless dir.include?("_test_")
+      FileUtils.remove_dir(dir)
+    end
   end
 
   def transform
