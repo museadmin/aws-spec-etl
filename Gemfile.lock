@@ -24,7 +24,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
+  activesupport (~> 5.2.2)
   aws-spec-etl!
   bundler
   minitest (~> 5.0)
